@@ -1,0 +1,6 @@
+framework module Pods_Watchy {
+  umbrella header "Pods-Watchy-umbrella.h"
+
+  export *
+  module * { export * }
+}

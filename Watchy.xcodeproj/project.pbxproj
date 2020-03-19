@@ -14,6 +14,7 @@
 		426C775B2423E54000E99DA0 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 426C775A2423E54000E99DA0 /* Assets.xcassets */; };
 		426C775E2423E54000E99DA0 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 426C775C2423E54000E99DA0 /* LaunchScreen.storyboard */; };
 		42A2766F2423E636006BC24F /* Keys.swift in Sources */ = {isa = PBXBuildFile; fileRef = 42A2766E2423E636006BC24F /* Keys.swift */; };
+		90B0EFBBAEDF864F4D711DF6 /* Pods_Watchy.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 773F65A1A4ACC6680557A93D /* Pods_Watchy.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -26,6 +27,9 @@
 		426C775D2423E54000E99DA0 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		426C775F2423E54000E99DA0 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		42A2766E2423E636006BC24F /* Keys.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Keys.swift; sourceTree = "<group>"; };
+		50A670F36962795FC5B101EB /* Pods-Watchy.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Watchy.release.xcconfig"; path = "Target Support Files/Pods-Watchy/Pods-Watchy.release.xcconfig"; sourceTree = "<group>"; };
+		773F65A1A4ACC6680557A93D /* Pods_Watchy.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Watchy.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		FD1A2C0947634B69D2A8908D /* Pods-Watchy.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Watchy.debug.xcconfig"; path = "Target Support Files/Pods-Watchy/Pods-Watchy.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -33,17 +37,30 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				90B0EFBBAEDF864F4D711DF6 /* Pods_Watchy.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		3FA716921929610DBB589305 /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				FD1A2C0947634B69D2A8908D /* Pods-Watchy.debug.xcconfig */,
+				50A670F36962795FC5B101EB /* Pods-Watchy.release.xcconfig */,
+			);
+			name = Pods;
+			path = Pods;
+			sourceTree = "<group>";
+		};
 		426C77452423E53F00E99DA0 = {
 			isa = PBXGroup;
 			children = (
 				426C77502423E53F00E99DA0 /* Watchy */,
 				426C774F2423E53F00E99DA0 /* Products */,
+				3FA716921929610DBB589305 /* Pods */,
+				EDF290AA8ADCB0C2AF2D316D /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -70,6 +87,14 @@
 			path = Watchy;
 			sourceTree = "<group>";
 		};
+		EDF290AA8ADCB0C2AF2D316D /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				773F65A1A4ACC6680557A93D /* Pods_Watchy.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -77,9 +102,11 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 426C77622423E54000E99DA0 /* Build configuration list for PBXNativeTarget "Watchy" */;
 			buildPhases = (
+				074E3C45C21D81CB1AD6B5C3 /* [CP] Check Pods Manifest.lock */,
 				426C774A2423E53F00E99DA0 /* Sources */,
 				426C774B2423E53F00E99DA0 /* Frameworks */,
 				426C774C2423E53F00E99DA0 /* Resources */,
+				D1318D3C8ACA1D84195EF61C /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -135,6 +162,48 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		074E3C45C21D81CB1AD6B5C3 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-Watchy-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+		D1318D3C8ACA1D84195EF61C /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-Watchy/Pods-Watchy-frameworks-${CONFIGURATION}-input-files.xcfilelist",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-Watchy/Pods-Watchy-frameworks-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-Watchy/Pods-Watchy-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
 		426C774A2423E53F00E99DA0 /* Sources */ = {
@@ -286,6 +355,7 @@
 		};
 		426C77632423E54000E99DA0 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = FD1A2C0947634B69D2A8908D /* Pods-Watchy.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
@@ -304,6 +374,7 @@
 		};
 		426C77642423E54000E99DA0 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 50A670F36962795FC5B101EB /* Pods-Watchy.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
