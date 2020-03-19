@@ -1,5 +1,5 @@
 //
-//  ViewController.swift
+//  NowPlayingViewController.swift
 //  Watchy
 //
 //  Created by Dionte Silmon on 3/19/20.
@@ -8,13 +8,12 @@
 
 import UIKit
 
-class ViewController: UIViewController {
+class NowPlayingViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        // Do any additional setup after loading the view.
+
+        
     }
 
-
 }
-
