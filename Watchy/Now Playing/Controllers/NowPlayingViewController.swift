@@ -13,7 +13,6 @@ class NowPlayingViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        
     }
 
 }
