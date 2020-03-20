@@ -23,11 +23,11 @@
             </objects>
             <point key="canvasLocation" x="931.88405797101461" y="138.61607142857142"/>
         </scene>
-        <!--Item-->
+        <!--Now Playing-->
         <scene sceneID="jUW-cp-zUv">
             <objects>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="e0W-pb-cjh" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="Item" id="e9Z-SA-bgS"/>
+                    <tabBarItem key="tabBarItem" title="Now Playing" image="movie" id="e9Z-SA-bgS"/>
                     <toolbarItems/>
                     <simulatedTabBarMetrics key="simulatedBottomBarMetrics"/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="yCk-pV-pYg">
@@ -44,4 +44,7 @@
             <point key="canvasLocation" x="21.739130434782609" y="138.61607142857142"/>
         </scene>
     </scenes>
+    <resources>
+        <image name="movie" width="25" height="25"/>
+    </resources>
 </document>
