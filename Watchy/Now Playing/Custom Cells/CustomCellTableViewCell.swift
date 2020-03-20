@@ -27,4 +27,11 @@ class CustomCellTableViewCell: UITableViewCell {
         // Configure the view for the selected state
     }
     
+    override func layoutSubviews() {
+        super.layoutSubviews()
+        
+        let margins = UIEdgeInsets(top: 10, left: 10, bottom: 10, right: 10)
+        contentView.frame = contentView.frame.inset(by: margins)
+    }
+    
 }

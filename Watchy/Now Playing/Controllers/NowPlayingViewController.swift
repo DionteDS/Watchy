@@ -27,6 +27,9 @@ class NowPlayingViewController: UIViewController {
         nowPlayingTable.delegate = self
         nowPlayingTable.dataSource = self
         
+        nowPlayingTable.tableFooterView = UIView.init(frame: .zero)
+        nowPlayingTable.separatorStyle = .none
+        
         setupLayout()
 
     }
@@ -35,8 +38,6 @@ class NowPlayingViewController: UIViewController {
     private func setupLayout() {
         
         view.addSubview(nowPlayingTable)
-        
-        nowPlayingTable.backgroundColor = .darkGray
         
         nowPlayingTable.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor, constant: 0).isActive = true
         nowPlayingTable.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 0).isActive = true
@@ -59,7 +60,7 @@ extension NowPlayingViewController: UITableViewDelegate, UITableViewDataSource {
         
         let cell = tableView.dequeueReusableCell(withIdentifier: "movieCell", for: indexPath) as! CustomCellTableViewCell
         
-        cell.backgroundColor = .darkGray
+        cell.customDesign()
         
         cell.title.text = "Testing..."
         cell.releaseDate.text = "07/22/90"
@@ -69,7 +70,7 @@ extension NowPlayingViewController: UITableViewDelegate, UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        return 195
+        return 160
     }
     
 }

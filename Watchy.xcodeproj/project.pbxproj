@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		4222AA0B242521D400047104 /* CustomCellTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4222AA09242521D400047104 /* CustomCellTableViewCell.swift */; };
 		4222AA0C242521D400047104 /* CustomCellTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4222AA0A242521D400047104 /* CustomCellTableViewCell.xib */; };
+		4222AA1024252D0B00047104 /* TableViewCell+Design.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4222AA0F24252D0B00047104 /* TableViewCell+Design.swift */; };
 		422684652423E955001C6734 /* NowPlaying.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 422684642423E955001C6734 /* NowPlaying.storyboard */; };
 		4226846A2423EB7B001C6734 /* NowPlayingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 422684692423EB7B001C6734 /* NowPlayingViewController.swift */; };
 		426C77522423E53F00E99DA0 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 426C77512423E53F00E99DA0 /* AppDelegate.swift */; };
@@ -23,6 +24,7 @@
 /* Begin PBXFileReference section */
 		4222AA09242521D400047104 /* CustomCellTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomCellTableViewCell.swift; sourceTree = "<group>"; };
 		4222AA0A242521D400047104 /* CustomCellTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = CustomCellTableViewCell.xib; sourceTree = "<group>"; };
+		4222AA0F24252D0B00047104 /* TableViewCell+Design.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "TableViewCell+Design.swift"; sourceTree = "<group>"; };
 		422684642423E955001C6734 /* NowPlaying.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = NowPlaying.storyboard; sourceTree = "<group>"; };
 		422684692423EB7B001C6734 /* NowPlayingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NowPlayingViewController.swift; sourceTree = "<group>"; };
 		426C774E2423E53F00E99DA0 /* Watchy.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Watchy.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -66,6 +68,14 @@
 				4222AA0A242521D400047104 /* CustomCellTableViewCell.xib */,
 			);
 			path = "Custom Cells";
+			sourceTree = "<group>";
+		};
+		4222AA0E24252CF000047104 /* Extenstions */ = {
+			isa = PBXGroup;
+			children = (
+				4222AA0F24252D0B00047104 /* TableViewCell+Design.swift */,
+			);
+			path = Extenstions;
 			sourceTree = "<group>";
 		};
 		422684662423EB51001C6734 /* Now Playing */ = {
@@ -117,6 +127,7 @@
 			children = (
 				426C77512423E53F00E99DA0 /* AppDelegate.swift */,
 				426C77532423E53F00E99DA0 /* SceneDelegate.swift */,
+				4222AA0E24252CF000047104 /* Extenstions */,
 				422684662423EB51001C6734 /* Now Playing */,
 				426C77572423E53F00E99DA0 /* Main.storyboard */,
 				426C775A2423E54000E99DA0 /* Assets.xcassets */,
@@ -253,6 +264,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				4226846A2423EB7B001C6734 /* NowPlayingViewController.swift in Sources */,
+				4222AA1024252D0B00047104 /* TableViewCell+Design.swift in Sources */,
 				42A2766F2423E636006BC24F /* Keys.swift in Sources */,
 				426C77522423E53F00E99DA0 /* AppDelegate.swift in Sources */,
 				4222AA0B242521D400047104 /* CustomCellTableViewCell.swift in Sources */,
