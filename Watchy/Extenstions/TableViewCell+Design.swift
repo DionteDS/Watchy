@@ -12,21 +12,17 @@ extension UITableViewCell {
     
     func customDesign() {
         
-        // Create the border of the cell
-        let radius: CGFloat = 3
-        contentView.layer.cornerRadius = radius
-        contentView.layer.borderWidth = 1
-        contentView.layer.borderColor = UIColor.black.cgColor
-        contentView.layer.masksToBounds = true
+        // Add shadow on cell
+        backgroundColor = .clear
+        layer.masksToBounds = false
+        layer.shadowOpacity = 0.11
+        layer.shadowRadius = 4
+        layer.shadowOffset = CGSize(width: 0, height: 0)
+        layer.shadowColor = UIColor.black.cgColor
         
-        
-//        layer.shadowColor = UIColor.black.cgColor
-//        layer.shadowOffset = CGSize(width: 1, height: 1)
-//        layer.shadowRadius = 5
-//        layer.shadowOpacity = 1
-//        layer.masksToBounds = false
-//        layer.shadowPath = UIBezierPath(roundedRect: bounds, cornerRadius: radius).cgPath
-//        layer.cornerRadius = radius
+        // Add corner radius on contentView
+        contentView.backgroundColor = .white
+        contentView.layer.cornerRadius = 4
         
     }
     
