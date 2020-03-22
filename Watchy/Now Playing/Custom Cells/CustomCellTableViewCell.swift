@@ -30,7 +30,7 @@ class CustomCellTableViewCell: UITableViewCell {
     override func layoutSubviews() {
         super.layoutSubviews()
         
-        let margins = UIEdgeInsets(top: 10, left: 10, bottom: 10, right: 10)
+        let margins = UIEdgeInsets(top: 10, left: 20, bottom: 10, right: 20)
         contentView.frame = contentView.frame.inset(by: margins)
     }
     

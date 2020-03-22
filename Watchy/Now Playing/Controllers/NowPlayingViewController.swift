@@ -7,10 +7,17 @@
 //
 
 import UIKit
+import Alamofire
+import AlamofireImage
+import SwiftyJSON
 
 class NowPlayingViewController: UIViewController {
     
     // Properties
+    
+    let baseURL = "https://api.themoviedb.org/3/movie/now_playing"
+    
+    var nowPlayingMovies: [[String: Any]] = [[String: Any]]()
     
     // Create the now playing tableView
     let nowPlayingTable: UITableView = {
@@ -27,10 +34,10 @@ class NowPlayingViewController: UIViewController {
         nowPlayingTable.delegate = self
         nowPlayingTable.dataSource = self
         
-        nowPlayingTable.tableFooterView = UIView.init(frame: .zero)
         nowPlayingTable.separatorStyle = .none
         
         setupLayout()
+        setupQuery()
 
     }
     
@@ -45,6 +52,30 @@ class NowPlayingViewController: UIViewController {
         nowPlayingTable.bottomAnchor.constraint(equalTo: view.bottomAnchor, constant: 0).isActive = true
         
     }
+    
+    private func setupQuery() {
+        
+        let params: [String: String] = ["api_key": apikey, "language": "en-US", "page": "1"]
+        
+        fetchNowPlayingData(url: baseURL, parameters: params)
+    }
+    
+    private func fetchNowPlayingData(url: String, parameters: [String: String]) {
+        
+        Alamofire.request(baseURL, method: .get, parameters: parameters).responseJSON { (response) in
+            
+            if let responseValue = response.result.value as! [String: Any]? {
+                if let responseData = responseValue["results"] as! [[String: Any]]? {
+                    self.nowPlayingMovies = responseData
+                    self.nowPlayingTable.reloadData()
+                }
+            } else {
+                print("Error, \(response.error!)")
+            }
+            
+        }
+        
+    }
 
 }
 
@@ -53,7 +84,7 @@ class NowPlayingViewController: UIViewController {
 extension NowPlayingViewController: UITableViewDelegate, UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 10
+        return nowPlayingMovies.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
@@ -62,8 +93,11 @@ extension NowPlayingViewController: UITableViewDelegate, UITableViewDataSource {
         
         cell.customDesign()
         
-        cell.title.text = "Testing..."
-        cell.releaseDate.text = "07/22/90"
+        let eachMovie = nowPlayingMovies[indexPath.row]
+        
+        cell.title.text = (eachMovie["title"] as? String ?? "")
+        cell.releaseDate.text = (eachMovie["release_date"] as? String ?? "")
+        
         
         return cell
         

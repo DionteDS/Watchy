@@ -15,14 +15,14 @@ extension UITableViewCell {
         // Add shadow on cell
         backgroundColor = .clear
         layer.masksToBounds = false
-        layer.shadowOpacity = 0.11
+        layer.shadowOpacity = 0.23
         layer.shadowRadius = 4
         layer.shadowOffset = CGSize(width: 0, height: 0)
         layer.shadowColor = UIColor.black.cgColor
         
         // Add corner radius on contentView
         contentView.backgroundColor = .white
-        contentView.layer.cornerRadius = 4
+        contentView.layer.cornerRadius = 8
         
     }
     
