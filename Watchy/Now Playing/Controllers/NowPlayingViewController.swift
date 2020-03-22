@@ -72,7 +72,9 @@ class NowPlayingViewController: UIViewController {
             if let responseValue = response.result.value as! [String: Any]? {
                 if let responseData = responseValue["results"] as! [[String: Any]]? {
                     self.nowPlayingMovies = responseData
-                    self.nowPlayingTable.reloadData()
+                    DispatchQueue.main.async {
+                        self.nowPlayingTable.reloadData()
+                    }
                 }
             } else {
                 print("Error, \(response.error!)")
@@ -100,21 +102,50 @@ extension NowPlayingViewController: UITableViewDelegate, UITableViewDataSource {
         
         if nowPlayingMovies.count > 0 {
             
+            // Grab each movie from the array
             let eachMovie = nowPlayingMovies[indexPath.row]
             
+            let rating = (eachMovie["vote_average"] as? Double ?? 0.0)
+            print(rating)
             
+            
+            // Grab the image url for each movie
             if let imageURL = eachMovie["poster_path"] as? String {
                 Alamofire.request(baseImageURL + imageURL).responseImage { (response) in
                     if let image = response.result.value {
                         let size = CGSize(width: 100, height: 120)
                         let scaledImage = image.af_imageScaled(to: size)
                         DispatchQueue.main.async {
+                            // Update the labels and image on the main thread
                             cell.title.text = (eachMovie["title"] as? String ?? "")
                             cell.releaseDate.text = (eachMovie["release_date"] as? String ?? "")
                             cell.posterImg.image = scaledImage
                         }
                     }
                 }
+            }
+            
+            
+            if rating >= 5 {
+                cell.ratingImg.image = UIImage(named: "regular_5")
+            } else if rating >= 4.5 && rating <= 4.9 {
+                cell.ratingImg.image = UIImage(named: "regular_4_half")
+            } else if rating >= 4 && rating < 4.5 {
+                cell.ratingImg.image = UIImage(named: "regular_4")
+            } else if rating >= 3.5 && rating <= 3.9 {
+                cell.ratingImg.image = UIImage(named: "regular_3_half")
+            } else if rating >= 3 && rating < 3.5 {
+                cell.ratingImg.image = UIImage(named: "regular_3")
+            } else if rating >= 2.5 && rating <= 2.9 {
+                cell.ratingImg.image = UIImage(named: "regular_2_half")
+            } else if rating >= 2 && rating < 2.5 {
+                cell.ratingImg.image = UIImage(named: "regular_2")
+            } else if rating >= 1.5 && rating <= 1.9 {
+                cell.ratingImg.image = UIImage(named: "regular_1_half")
+            } else if rating >= 1 && rating < 1.5 {
+                cell.ratingImg.image = UIImage(named: "regular_1")
+            } else {
+                cell.ratingImg.image = UIImage(named: "regular_0")
             }
             
         }
