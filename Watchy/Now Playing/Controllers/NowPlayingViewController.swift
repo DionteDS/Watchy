@@ -16,6 +16,7 @@ class NowPlayingViewController: UIViewController {
     // Properties
     
     let baseURL = "https://api.themoviedb.org/3/movie/now_playing"
+    let baseImageURL = "https://image.tmdb.org/t/p/w500"
     
     var nowPlayingMovies: [[String: Any]] = [[String: Any]]()
     
@@ -53,6 +54,9 @@ class NowPlayingViewController: UIViewController {
         
     }
     
+    // MARK: - Network calls
+    
+    // set the query search
     private func setupQuery() {
         
         let params: [String: String] = ["api_key": apikey, "language": "en-US", "page": "1"]
@@ -60,6 +64,7 @@ class NowPlayingViewController: UIViewController {
         fetchNowPlayingData(url: baseURL, parameters: params)
     }
     
+    // Fetch the data
     private func fetchNowPlayingData(url: String, parameters: [String: String]) {
         
         Alamofire.request(baseURL, method: .get, parameters: parameters).responseJSON { (response) in
@@ -93,10 +98,27 @@ extension NowPlayingViewController: UITableViewDelegate, UITableViewDataSource {
         
         cell.customDesign()
         
-        let eachMovie = nowPlayingMovies[indexPath.row]
+        if nowPlayingMovies.count > 0 {
+            
+            let eachMovie = nowPlayingMovies[indexPath.row]
+            
+            
+            if let imageURL = eachMovie["poster_path"] as? String {
+                Alamofire.request(baseImageURL + imageURL).responseImage { (response) in
+                    if let image = response.result.value {
+                        let size = CGSize(width: 100, height: 120)
+                        let scaledImage = image.af_imageScaled(to: size)
+                        DispatchQueue.main.async {
+                            cell.title.text = (eachMovie["title"] as? String ?? "")
+                            cell.releaseDate.text = (eachMovie["release_date"] as? String ?? "")
+                            cell.posterImg.image = scaledImage
+                        }
+                    }
+                }
+            }
+            
+        }
         
-        cell.title.text = (eachMovie["title"] as? String ?? "")
-        cell.releaseDate.text = (eachMovie["release_date"] as? String ?? "")
         
         
         return cell
