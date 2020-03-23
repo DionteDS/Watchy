@@ -7,6 +7,8 @@
 //
 
 import UIKit
+import Alamofire
+import AlamofireImage
 
 class InfoViewController: UIViewController {
     
@@ -33,10 +35,8 @@ class InfoViewController: UIViewController {
 
         setupNavBar()
         setupLayout()
+        fetchPoster()
         
-        print(movieTitle)
-        print(movieReleaseDate)
-        print(movieURL)
     }
     
     private func setupLayout() {
@@ -55,6 +55,20 @@ class InfoViewController: UIViewController {
         navigationController?.navigationBar.titleTextAttributes = [NSAttributedString.Key.foregroundColor: UIColor.white]
     }
     
+    // MARK: - Network Calls
     
-
+    // Grab the selected movie poster image
+    private func fetchPoster() {
+        
+        Alamofire.request(baseImageURL + movieURL).responseImage { (response) in
+            if let image = response.result.value {
+                let size = CGSize(width: 414, height: 448)
+                let scaledImage = image.af_imageScaled(to: size)
+                DispatchQueue.main.async {
+                    self.movieImage.image = scaledImage
+                }
+            }
+        }
+        
+    }
 }
