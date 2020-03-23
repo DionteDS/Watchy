@@ -18,7 +18,7 @@ class InfoViewController: UIViewController {
     
     var movieTitle = ""
     var movieReleaseDate = ""
-    var ratingCount = ""
+    var ratingCount = 0.0
     var movieURL = ""
     var movieSummary = ""
     
@@ -36,7 +36,7 @@ class InfoViewController: UIViewController {
     let movieTitleLabel: UILabel = {
         let label = UILabel()
         label.font = UIFont.boldSystemFont(ofSize: 26)
-        label.textColor = .red
+        label.textColor = .black
         return label
     }()
     
@@ -44,7 +44,7 @@ class InfoViewController: UIViewController {
     let movieRelease: UILabel = {
         let label = UILabel()
         label.font = UIFont.systemFont(ofSize: 16)
-        label.textColor = .red
+        label.textColor = .black
         return label
     }()
     
@@ -64,7 +64,7 @@ class InfoViewController: UIViewController {
         text.isEditable = false
         text.showsHorizontalScrollIndicator = true
         text.showsVerticalScrollIndicator = true
-        text.textColor = .red
+        text.textColor = .black
         return text
     }()
     
@@ -99,9 +99,10 @@ class InfoViewController: UIViewController {
         view.addSubview(stacks)
         view.addSubview(summary)
         
-        // Add the labels to the stackView
+        // Add the labels and imageView to the stackView
         stacks.addArrangedSubview(movieTitleLabel)
         stacks.addArrangedSubview(movieRelease)
+        stacks.addArrangedSubview(movieRating)
         
         // constraints for movieImage
         movieImage.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor, constant: 0).isActive = true
@@ -117,7 +118,7 @@ class InfoViewController: UIViewController {
         summary.topAnchor.constraint(equalTo: stacks.bottomAnchor, constant: 10).isActive = true
         summary.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 5).isActive = true
         summary.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -5).isActive = true
-        summary.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor, constant: 10).isActive = true
+        summary.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor, constant: 15).isActive = true
         
     }
     
@@ -142,6 +143,30 @@ class InfoViewController: UIViewController {
                 }
             }
         }
+        
+        // Determine the star rating for each movie selected
+        if ratingCount >= 5 {
+            movieRating.image = UIImage(named: "regular_5")
+        } else if ratingCount >= 4.5 && ratingCount <= 4.9 {
+            movieRating.image = UIImage(named: "regular_4_half")
+        } else if ratingCount >= 4 && ratingCount < 4.5 {
+            movieRating.image = UIImage(named: "regular_4")
+        } else if ratingCount >= 3.5 && ratingCount <= 3.9 {
+            movieRating.image = UIImage(named: "regular_3_half")
+        } else if ratingCount >= 3 && ratingCount < 3.5 {
+            movieRating.image = UIImage(named: "regular_3")
+        } else if ratingCount >= 2.5 && ratingCount <= 2.9 {
+            movieRating.image = UIImage(named: "regular_2_half")
+        } else if ratingCount >= 2 && ratingCount < 2.5 {
+            movieRating.image = UIImage(named: "regular_2")
+        } else if ratingCount >= 1.5 && ratingCount <= 1.9 {
+            movieRating.image = UIImage(named: "regular_1_half")
+        } else if ratingCount >= 1 && ratingCount < 1.5 {
+            movieRating.image = UIImage(named: "regular_1")
+        } else {
+            movieRating.image = UIImage(named: "regular_0")
+        }
+        
         
     }
 }
