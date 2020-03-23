@@ -20,10 +20,9 @@ class SearchViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        navigationItem.title = "Search"
-        
         searchBar.delegate = self
         setupLayout()
+        setupNavBar()
     }
     
     private func setupLayout() {
@@ -33,6 +32,14 @@ class SearchViewController: UIViewController {
         searchBar.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor).isActive = true
         searchBar.leadingAnchor.constraint(equalTo: view.leadingAnchor).isActive = true
         searchBar.trailingAnchor.constraint(equalTo: view.trailingAnchor).isActive = true
+        
+    }
+    
+    private func setupNavBar() {
+        
+        navigationItem.title = "Search"
+        
+        navigationController?.navigationBar.titleTextAttributes = [NSAttributedString.Key.foregroundColor: UIColor.white]
         
     }
     
