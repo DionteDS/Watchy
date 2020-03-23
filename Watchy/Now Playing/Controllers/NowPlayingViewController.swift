@@ -134,24 +134,52 @@ extension NowPlayingViewController: UITableViewDelegate, UITableViewDataSource {
                 }
             }
             
+            // 5 stars
+//            10 - Masterpiece
+//            9 - Amazing
             
-            if rating >= 5 {
+            // 4.5 stars
+//            8 - Great
+            
+            // 4 stars
+//            7 - Good
+            
+            // 3.5 stars
+//            6 - Decent
+            
+            // 3 stars
+//            5 - Mediocre
+            
+            // 2.5 stars
+//            4 - Bad
+            
+            // 2 stars
+//            3 - Awful
+            
+            // 1.5 stars
+//            2 - Terrible
+            
+            // 1 stars
+//            1 - Catastrophe
+            
+            
+            if rating >= 9  && rating <= 10{
                 cell.ratingImg.image = UIImage(named: "regular_5")
-            } else if rating >= 4.5 && rating <= 4.9 {
+            } else if rating >= 8 && rating < 9 {
                 cell.ratingImg.image = UIImage(named: "regular_4_half")
-            } else if rating >= 4 && rating < 4.5 {
+            } else if rating >= 7 && rating < 8 {
                 cell.ratingImg.image = UIImage(named: "regular_4")
-            } else if rating >= 3.5 && rating <= 3.9 {
+            } else if rating >= 6 && rating < 7 {
                 cell.ratingImg.image = UIImage(named: "regular_3_half")
-            } else if rating >= 3 && rating < 3.5 {
+            } else if rating >= 5 && rating < 6 {
                 cell.ratingImg.image = UIImage(named: "regular_3")
-            } else if rating >= 2.5 && rating <= 2.9 {
+            } else if rating >= 4 && rating < 5 {
                 cell.ratingImg.image = UIImage(named: "regular_2_half")
-            } else if rating >= 2 && rating < 2.5 {
+            } else if rating >= 3 && rating < 4 {
                 cell.ratingImg.image = UIImage(named: "regular_2")
-            } else if rating >= 1.5 && rating <= 1.9 {
+            } else if rating >= 2 && rating < 3 {
                 cell.ratingImg.image = UIImage(named: "regular_1_half")
-            } else if rating >= 1 && rating < 1.5 {
+            } else if rating >= 1 && rating < 2 {
                 cell.ratingImg.image = UIImage(named: "regular_1")
             } else {
                 cell.ratingImg.image = UIImage(named: "regular_0")

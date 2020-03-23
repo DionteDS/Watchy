@@ -145,28 +145,27 @@ class InfoViewController: UIViewController {
         }
         
         // Determine the star rating for each movie selected
-        if ratingCount >= 5 {
-            movieRating.image = UIImage(named: "regular_5")
-        } else if ratingCount >= 4.5 && ratingCount <= 4.9 {
-            movieRating.image = UIImage(named: "regular_4_half")
-        } else if ratingCount >= 4 && ratingCount < 4.5 {
-            movieRating.image = UIImage(named: "regular_4")
-        } else if ratingCount >= 3.5 && ratingCount <= 3.9 {
-            movieRating.image = UIImage(named: "regular_3_half")
-        } else if ratingCount >= 3 && ratingCount < 3.5 {
-            movieRating.image = UIImage(named: "regular_3")
-        } else if ratingCount >= 2.5 && ratingCount <= 2.9 {
-            movieRating.image = UIImage(named: "regular_2_half")
-        } else if ratingCount >= 2 && ratingCount < 2.5 {
-            movieRating.image = UIImage(named: "regular_2")
-        } else if ratingCount >= 1.5 && ratingCount <= 1.9 {
-            movieRating.image = UIImage(named: "regular_1_half")
-        } else if ratingCount >= 1 && ratingCount < 1.5 {
-            movieRating.image = UIImage(named: "regular_1")
+        if rating >= 9  && rating <= 10{
+            cell.ratingImg.image = UIImage(named: "regular_5")
+        } else if rating >= 8 && rating < 9 {
+            cell.ratingImg.image = UIImage(named: "regular_4_half")
+        } else if rating >= 7 && rating < 8 {
+            cell.ratingImg.image = UIImage(named: "regular_4")
+        } else if rating >= 6 && rating < 7 {
+            cell.ratingImg.image = UIImage(named: "regular_3_half")
+        } else if rating >= 5 && rating < 6 {
+            cell.ratingImg.image = UIImage(named: "regular_3")
+        } else if rating >= 4 && rating < 5 {
+            cell.ratingImg.image = UIImage(named: "regular_2_half")
+        } else if rating >= 3 && rating < 4 {
+            cell.ratingImg.image = UIImage(named: "regular_2")
+        } else if rating >= 2 && rating < 3 {
+            cell.ratingImg.image = UIImage(named: "regular_1_half")
+        } else if rating >= 1 && rating < 2 {
+            cell.ratingImg.image = UIImage(named: "regular_1")
         } else {
-            movieRating.image = UIImage(named: "regular_0")
+            cell.ratingImg.image = UIImage(named: "regular_0")
         }
-        
         
     }
 }
