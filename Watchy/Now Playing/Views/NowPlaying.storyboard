@@ -40,7 +40,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="jws-Tw-JZp" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1708" y="132"/>
+            <point key="canvasLocation" x="1707.2463768115942" y="131.91964285714286"/>
         </scene>
         <!--Now Playing-->
         <scene sceneID="jUW-cp-zUv">

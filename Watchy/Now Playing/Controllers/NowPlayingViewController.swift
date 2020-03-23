@@ -198,6 +198,7 @@ extension NowPlayingViewController: UITableViewDelegate, UITableViewDataSource {
             
             controller.movieTitle = movie["title"] as? String ?? ""
             controller.movieReleaseDate = movie["release_date"] as? String ?? ""
+            controller.movieURL = movie["poster_path"] as? String ?? ""
         }
         
     }
