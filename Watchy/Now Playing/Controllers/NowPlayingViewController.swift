@@ -19,6 +19,7 @@ class NowPlayingViewController: UIViewController {
     let baseImageURL = "https://image.tmdb.org/t/p/w500"
     
     var nowPlayingMovies: [[String: Any]] = [[String: Any]]()
+    var row = 0
     
     // Create the now playing tableView
     let nowPlayingTable: UITableView = {
@@ -39,8 +40,10 @@ class NowPlayingViewController: UIViewController {
         
         setupLayout()
         setupQuery()
+        setupNavBar()
 
     }
+    
     
     // Setup constraints
     private func setupLayout() {
@@ -51,6 +54,14 @@ class NowPlayingViewController: UIViewController {
         nowPlayingTable.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 0).isActive = true
         nowPlayingTable.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: 0).isActive = true
         nowPlayingTable.bottomAnchor.constraint(equalTo: view.bottomAnchor, constant: 0).isActive = true
+        
+    }
+    
+    // Setup the nav bar
+    private func setupNavBar() {
+        
+        navigationItem.title = "Now Playing"
+        navigationController?.navigationBar.titleTextAttributes = [NSAttributedString.Key.foregroundColor: UIColor.white]
         
     }
     
@@ -106,8 +117,6 @@ extension NowPlayingViewController: UITableViewDelegate, UITableViewDataSource {
             let eachMovie = nowPlayingMovies[indexPath.row]
             
             let rating = (eachMovie["vote_average"] as? Double ?? 0.0)
-            print(rating)
-            
             
             // Grab the image url for each movie
             if let imageURL = eachMovie["poster_path"] as? String {
@@ -156,6 +165,18 @@ extension NowPlayingViewController: UITableViewDelegate, UITableViewDataSource {
         
     }
     
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        
+        if let rowIndex = tableView.indexPathForSelectedRow?.row {
+            row = rowIndex
+        }
+        
+        performSegue(withIdentifier: "goToInfoVC", sender: self)
+        
+        tableView.deselectRow(at: indexPath, animated: true)
+        
+    }
+    
     func tableView(_ tableView: UITableView, willDisplay cell: UITableViewCell, forRowAt indexPath: IndexPath) {
         cell.contentView.layer.masksToBounds = true
         
@@ -166,6 +187,19 @@ extension NowPlayingViewController: UITableViewDelegate, UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         return 160
+    }
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        
+        if segue.identifier == "goToInfoVC" {
+            let controller = segue.destination as! InfoViewController
+            
+            let movie = nowPlayingMovies[row]
+            
+            controller.movieTitle = movie["title"] as? String ?? ""
+            controller.movieReleaseDate = movie["release_date"] as? String ?? ""
+        }
+        
     }
     
 }

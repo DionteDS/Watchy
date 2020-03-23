@@ -18,10 +18,29 @@
                         <viewLayoutGuide key="safeArea" id="nrT-82-3nh"/>
                     </view>
                     <navigationItem key="navigationItem" id="y1y-7E-1yf"/>
+                    <connections>
+                        <segue destination="Hio-iT-PZW" kind="show" identifier="goToInfoVC" id="4KJ-Cd-93c"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="ZZ6-Jn-IuR" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="931.88405797101461" y="138.61607142857142"/>
+        </scene>
+        <!--Info View Controller-->
+        <scene sceneID="lZ4-Sx-AVH">
+            <objects>
+                <viewController id="Hio-iT-PZW" customClass="InfoViewController" customModule="Watchy" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="lOn-tB-ZJK">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                        <viewLayoutGuide key="safeArea" id="fCp-RR-pmV"/>
+                    </view>
+                    <navigationItem key="navigationItem" id="e8f-MS-PEn"/>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="jws-Tw-JZp" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1708" y="132"/>
         </scene>
         <!--Now Playing-->
         <scene sceneID="jUW-cp-zUv">
