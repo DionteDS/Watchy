@@ -79,12 +79,14 @@ class SearchViewController: UIViewController {
     
     // MARK: - Networking Calls
     
+    // Setup the search query
     private func searchQuery(movie: String) {
         
         let params: [String: String] = ["api_key": apikey, "language": "en-US", "query": movie, "page": "1"]
         fetchMovieData(url: baseURLforSearch, parameters: params)
     }
     
+    // Parse the data
     private func fetchMovieData(url: String, parameters: [String: String]) {
         
         Alamofire.request(url, method: .get, parameters: parameters).responseJSON { (response) in
@@ -116,8 +118,54 @@ extension SearchViewController: UITableViewDelegate, UITableViewDataSource {
         let cell = tableView.dequeueReusableCell(withIdentifier: "searchedMovieCell", for: indexPath) as! SearchedCellTableViewCell
         
         cell.customDesign()
-
         
+        if movies.count > 0 {
+            
+            let movie = movies[indexPath.row]
+            
+            let rating = movie["vote_average"] as? Double ?? 0.0
+            
+            
+            if let imageURL = movie["poster_path"] as? String {
+                Alamofire.request(baseImageURL + imageURL).responseImage { (response) in
+                    if let image = response.result.value {
+                        let size = CGSize(width: 100, height: 120)
+                        let scaledImage = image.af_imageScaled(to: size)
+                        DispatchQueue.main.async {
+                            cell.title.text = movie["title"] as? String ?? ""
+                            cell.releaseDate.text = movie["release_date"] as? String ?? ""
+                            cell.posterImage.image = scaledImage
+                            // Put in github link to image
+//                            <a target="_blank" href="https://icons8.com/icons/set/error">Error icon</a> icon by <a target="_blank" href="https://icons8.com">Icons8</a>
+                        }
+                    }
+                }
+            }
+            
+            // Determine the star rating for each movie
+            if rating >= 9  && rating <= 10{
+                cell.ratingImg.image = UIImage(named: "regular_5")
+            } else if rating >= 8 && rating < 9 {
+                cell.ratingImg.image = UIImage(named: "regular_4_half")
+            } else if rating >= 7 && rating < 8 {
+                cell.ratingImg.image = UIImage(named: "regular_4")
+            } else if rating >= 6 && rating < 7 {
+                cell.ratingImg.image = UIImage(named: "regular_3_half")
+            } else if rating >= 5 && rating < 6 {
+                cell.ratingImg.image = UIImage(named: "regular_3")
+            } else if rating >= 4 && rating < 5 {
+                cell.ratingImg.image = UIImage(named: "regular_2_half")
+            } else if rating >= 3 && rating < 4 {
+                cell.ratingImg.image = UIImage(named: "regular_2")
+            } else if rating >= 2 && rating < 3 {
+                cell.ratingImg.image = UIImage(named: "regular_1_half")
+            } else if rating >= 1 && rating < 2 {
+                cell.ratingImg.image = UIImage(named: "regular_1")
+            } else {
+                cell.ratingImg.image = UIImage(named: "regular_0")
+            }
+            
+        }
 
         return cell
     }
