@@ -9,13 +9,18 @@
 import UIKit
 import Alamofire
 import AlamofireImage
+import SwiftyJSON
 
 class SearchViewController: UIViewController {
     
-    // Properties
+    // MARK: - Properties
+    
+    private let baseURLforSearch = "https://api.themoviedb.org/3/search/movie"
+    private let baseImageURL = "https://image.tmdb.org/t/p/w500"
+    private var movies: [[String: Any]] = [[String: Any]]()
     
     // SearchBar Property
-    let searchBar: UISearchBar = {
+    private let searchBar: UISearchBar = {
         let searchBar = UISearchBar()
         searchBar.translatesAutoresizingMaskIntoConstraints = false
         searchBar.placeholder = "Search for a movie"
@@ -23,7 +28,7 @@ class SearchViewController: UIViewController {
     }()
     
     // Search movie tableView
-    let searchMovieTableView: UITableView = {
+    private let searchMovieTableView: UITableView = {
         let tableView = UITableView()
         let nib = UINib(nibName: "SearchedCellTableViewCell", bundle: nil)
         tableView.translatesAutoresizingMaskIntoConstraints = false
@@ -50,10 +55,12 @@ class SearchViewController: UIViewController {
         view.addSubview(searchBar)
         view.addSubview(searchMovieTableView)
         
+        // Search Bar constraints
         searchBar.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor, constant: 0).isActive = true
         searchBar.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 0).isActive = true
         searchBar.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: 0).isActive = true
         
+        // TableView constraints
         searchMovieTableView.topAnchor.constraint(equalTo: searchBar.bottomAnchor, constant: 0).isActive = true
         searchMovieTableView.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 0).isActive = true
         searchMovieTableView.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: 0).isActive = true
@@ -61,6 +68,7 @@ class SearchViewController: UIViewController {
         
     }
     
+    // Setup the Nav Bar
     private func setupNavBar() {
         
         navigationItem.title = "Search"
@@ -68,12 +76,40 @@ class SearchViewController: UIViewController {
         navigationController?.navigationBar.titleTextAttributes = [NSAttributedString.Key.foregroundColor: UIColor.white]
         
     }
+    
+    // MARK: - Networking Calls
+    
+    private func searchQuery(movie: String) {
+        
+        let params: [String: String] = ["api_key": apikey, "language": "en-US", "query": movie, "page": "1"]
+        fetchMovieData(url: baseURLforSearch, parameters: params)
+    }
+    
+    private func fetchMovieData(url: String, parameters: [String: String]) {
+        
+        Alamofire.request(url, method: .get, parameters: parameters).responseJSON { (response) in
+            
+            if let responseValue = response.result.value as! [String: Any]? {
+                if let responseData = responseValue["results"] as! [[String: Any]]? {
+                    self.movies = responseData
+                    self.searchMovieTableView.reloadData()
+                }
+                
+            } else {
+                print(response.error!)
+            }
+            
+        }
+        
+    }
 }
+
+// MARK: TableView Delegate and DataSource Methods
 
 extension SearchViewController: UITableViewDelegate, UITableViewDataSource {
 
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 5
+        return movies.count
     }
 
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
@@ -81,10 +117,13 @@ extension SearchViewController: UITableViewDelegate, UITableViewDataSource {
         
         cell.customDesign()
 
-        cell.title.text = "Testing"
-        cell.releaseDate.text = "2020/07/16"
+        
 
         return cell
+    }
+    
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        tableView.deselectRow(at: indexPath, animated: true)
     }
     
     func tableView(_ tableView: UITableView, willDisplay cell: UITableViewCell, forRowAt indexPath: IndexPath) {
@@ -99,9 +138,20 @@ extension SearchViewController: UITableViewDelegate, UITableViewDataSource {
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         return 160
     }
+    
 
 }
 
+// MARK: - SearchBar Delegate And DataSource Methods
+
 extension SearchViewController: UISearchBarDelegate {
+    
+    func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
+        searchQuery(movie: searchBar.text!)
+        
+        DispatchQueue.main.async {
+            searchBar.resignFirstResponder()
+        }
+    }
     
 }
