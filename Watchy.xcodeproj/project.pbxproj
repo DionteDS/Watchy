@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		4220F277242B13BB00ACA591 /* SearchedCellTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4220F275242B13BB00ACA591 /* SearchedCellTableViewCell.swift */; };
+		4220F278242B13BB00ACA591 /* SearchedCellTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4220F276242B13BB00ACA591 /* SearchedCellTableViewCell.xib */; };
 		4222AA0B242521D400047104 /* CustomCellTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4222AA09242521D400047104 /* CustomCellTableViewCell.swift */; };
 		4222AA0C242521D400047104 /* CustomCellTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4222AA0A242521D400047104 /* CustomCellTableViewCell.xib */; };
 		4222AA1024252D0B00047104 /* TableViewCell+Design.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4222AA0F24252D0B00047104 /* TableViewCell+Design.swift */; };
@@ -25,6 +27,8 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		4220F275242B13BB00ACA591 /* SearchedCellTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchedCellTableViewCell.swift; sourceTree = "<group>"; };
+		4220F276242B13BB00ACA591 /* SearchedCellTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SearchedCellTableViewCell.xib; sourceTree = "<group>"; };
 		4222AA09242521D400047104 /* CustomCellTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomCellTableViewCell.swift; sourceTree = "<group>"; };
 		4222AA0A242521D400047104 /* CustomCellTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = CustomCellTableViewCell.xib; sourceTree = "<group>"; };
 		4222AA0F24252D0B00047104 /* TableViewCell+Design.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "TableViewCell+Design.swift"; sourceTree = "<group>"; };
@@ -65,6 +69,15 @@
 				50A670F36962795FC5B101EB /* Pods-Watchy.release.xcconfig */,
 			);
 			path = Pods;
+			sourceTree = "<group>";
+		};
+		4220F274242B139600ACA591 /* Custom Cells */ = {
+			isa = PBXGroup;
+			children = (
+				4220F275242B13BB00ACA591 /* SearchedCellTableViewCell.swift */,
+				4220F276242B13BB00ACA591 /* SearchedCellTableViewCell.xib */,
+			);
+			path = "Custom Cells";
 			sourceTree = "<group>";
 		};
 		4222AA08242521BA00047104 /* Custom Cells */ = {
@@ -114,6 +127,7 @@
 		4238F1C624285E8E007FEB9D /* Search Movie */ = {
 			isa = PBXGroup;
 			children = (
+				4220F274242B139600ACA591 /* Custom Cells */,
 				4238F1C924285EE0007FEB9D /* Controllers */,
 				4238F1CC24285F2B007FEB9D /* Views */,
 			);
@@ -239,6 +253,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				4220F278242B13BB00ACA591 /* SearchedCellTableViewCell.xib in Resources */,
 				422684652423E955001C6734 /* NowPlaying.storyboard in Resources */,
 				426C775E2423E54000E99DA0 /* LaunchScreen.storyboard in Resources */,
 				4222AA0C242521D400047104 /* CustomCellTableViewCell.xib in Resources */,
@@ -305,6 +320,7 @@
 				426C77522423E53F00E99DA0 /* AppDelegate.swift in Sources */,
 				4222AA0B242521D400047104 /* CustomCellTableViewCell.swift in Sources */,
 				426C77542423E53F00E99DA0 /* SceneDelegate.swift in Sources */,
+				4220F277242B13BB00ACA591 /* SearchedCellTableViewCell.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
