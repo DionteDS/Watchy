@@ -18,10 +18,29 @@
                         <viewLayoutGuide key="safeArea" id="Jbh-BR-HTU"/>
                     </view>
                     <navigationItem key="navigationItem" id="w7O-iM-Vsd"/>
+                    <connections>
+                        <segue destination="A6l-aU-4kD" kind="show" identifier="movieInfo" id="feN-wF-1mR"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="AkE-lj-3S5" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="1591.304347826087" y="11.383928571428571"/>
+        </scene>
+        <!--Search Movie Info View Controller-->
+        <scene sceneID="hjn-ZF-5c6">
+            <objects>
+                <viewController id="A6l-aU-4kD" customClass="SearchMovieInfoViewController" customModule="Watchy" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="aST-75-Slr">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                        <viewLayoutGuide key="safeArea" id="uid-JA-R1r"/>
+                    </view>
+                    <navigationItem key="navigationItem" id="hQt-8n-iHF"/>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="NaS-tR-g9O" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2369" y="12"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="5g5-KQ-edv">

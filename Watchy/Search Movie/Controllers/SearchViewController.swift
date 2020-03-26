@@ -18,6 +18,7 @@ class SearchViewController: UIViewController {
     private let baseURLforSearch = "https://api.themoviedb.org/3/search/movie"
     private let baseImageURL = "https://image.tmdb.org/t/p/w500"
     private var movies: [[String: Any]] = [[String: Any]]()
+    private var row = 0
     
     // SearchBar Property
     private let searchBar: UISearchBar = {
@@ -171,6 +172,13 @@ extension SearchViewController: UITableViewDelegate, UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        
+        if let rowIndex = tableView.indexPathForSelectedRow?.row {
+            row = rowIndex
+        }
+        
+        performSegue(withIdentifier: "movieInfo", sender: self)
+        
         tableView.deselectRow(at: indexPath, animated: true)
     }
     
