@@ -195,6 +195,22 @@ extension SearchViewController: UITableViewDelegate, UITableViewDataSource {
         return 160
     }
     
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        
+        if segue.identifier == "movieInfo" {
+            let controller = segue.destination as! SearchMovieInfoViewController
+            
+            let movie = movies[row]
+            
+            controller.movieTitle = movie["title"] as? String ?? ""
+            controller.movieRelease = movie["release_date"] as? String ?? ""
+            controller.movieImageURL = movie["poster_path"] as? String ?? ""
+            controller.summary = movie["overview"] as? String ?? ""
+            controller.ratingCount = movie["vote_average"] as? Double ?? 0.0
+        }
+        
+    }
+    
 
 }
 
