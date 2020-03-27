@@ -19,6 +19,7 @@ class TrendingViewController: UIViewController {
     
     private var layout = UICollectionViewFlowLayout()
     private let trendingBaseURL = "https://api.themoviedb.org/3/trending/movie/week"
+    let baseImageURL = "https://image.tmdb.org/t/p/w500"
     private var movies: [[String: Any]] = [[String: Any]]()
     
     private let movieTrendingCollection: UICollectionView = {
@@ -29,7 +30,7 @@ class TrendingViewController: UIViewController {
         collectionView.widthAnchor.constraint(equalToConstant: 414).isActive = true
         collectionView.heightAnchor.constraint(equalToConstant: 300).isActive = true
         collectionView.isScrollEnabled = true
-        collectionView.backgroundColor = .black
+        collectionView.backgroundColor = .white
         return collectionView
     }()
 
@@ -115,19 +116,60 @@ class TrendingViewController: UIViewController {
 extension TrendingViewController: UICollectionViewDelegate, UICollectionViewDataSource {
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return 10
+        return movies.count
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "movieCell", for: indexPath) as! TrendingCollectionViewCell
         
-        cell.movieTitle.text = "title"
-        cell.releaseDate.text = "01/02/20"
-        cell.moviePoster.backgroundColor = .cyan
+        if movies.count > 0 {
+            
+            let eachMovie = movies[indexPath.row]
+            let ratingCount = eachMovie["vote_average"] as? Double ?? 0.0
+            
+            
+            if let imageURL = eachMovie["poster_path"] as? String {
+                Alamofire.request(baseImageURL + imageURL).responseImage { (response) in
+                    
+                    if let image = response.result.value {
+                        let size = CGSize(width: 180, height: 215)
+                        let scaledImage = image.af_imageScaled(to: size)
+                        DispatchQueue.main.async {
+                            cell.moviePoster.image = scaledImage
+                            cell.movieTitle.text = eachMovie["title"] as? String ?? ""
+                            cell.releaseDate.text = eachMovie["release_date"] as? String ?? ""
+                        }
+                    }
+                    
+                }
+            }
+            
+            // Determine the star rating for each movie selected
+            if ratingCount >= 9  && ratingCount <= 10 {
+                cell.ratingImg.image = UIImage(named: "regular_5")
+            } else if ratingCount >= 8 && ratingCount < 9 {
+                cell.ratingImg.image = UIImage(named: "regular_4_half")
+            } else if ratingCount >= 7 && ratingCount < 8 {
+                cell.ratingImg.image = UIImage(named: "regular_4")
+            } else if ratingCount >= 6 && ratingCount < 7 {
+                cell.ratingImg.image = UIImage(named: "regular_3_half")
+            } else if ratingCount >= 5 && ratingCount < 6 {
+                cell.ratingImg.image = UIImage(named: "regular_3")
+            } else if ratingCount >= 4 && ratingCount < 5 {
+                cell.ratingImg.image = UIImage(named: "regular_2_half")
+            } else if ratingCount >= 3 && ratingCount < 4 {
+                cell.ratingImg.image = UIImage(named: "regular_2")
+            } else if ratingCount >= 2 && ratingCount < 3 {
+                cell.ratingImg.image = UIImage(named: "regular_1_half")
+            } else if ratingCount >= 1 && ratingCount < 2 {
+                cell.ratingImg.image = UIImage(named: "regular_1")
+            } else {
+                cell.ratingImg.image = UIImage(named: "regular_0")
+            }
+            
+        }
         
-        cell.movieTitle.textColor = .white
-        cell.releaseDate.textColor = .white
         return cell
         
     }
