@@ -15,7 +15,6 @@ class TrendingCollectionViewCell: UICollectionViewCell {
     @IBOutlet weak var ratingImg: UIImageView!
     @IBOutlet weak var moviePoster: UIImageView!
     
-    
 
     override func awakeFromNib() {
         super.awakeFromNib()

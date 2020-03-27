@@ -27,6 +27,7 @@
 		426C77592423E53F00E99DA0 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 426C77572423E53F00E99DA0 /* Main.storyboard */; };
 		426C775B2423E54000E99DA0 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 426C775A2423E54000E99DA0 /* Assets.xcassets */; };
 		426C775E2423E54000E99DA0 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 426C775C2423E54000E99DA0 /* LaunchScreen.storyboard */; };
+		4278C41C242D8A75000738AA /* ImageView+Design.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4278C41B242D8A75000738AA /* ImageView+Design.swift */; };
 		42A2766F2423E636006BC24F /* Keys.swift in Sources */ = {isa = PBXBuildFile; fileRef = 42A2766E2423E636006BC24F /* Keys.swift */; };
 		90B0EFBBAEDF864F4D711DF6 /* Pods_Watchy.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 773F65A1A4ACC6680557A93D /* Pods_Watchy.framework */; };
 /* End PBXBuildFile section */
@@ -54,6 +55,7 @@
 		426C775A2423E54000E99DA0 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		426C775D2423E54000E99DA0 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		426C775F2423E54000E99DA0 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		4278C41B242D8A75000738AA /* ImageView+Design.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "ImageView+Design.swift"; sourceTree = "<group>"; };
 		42A2766E2423E636006BC24F /* Keys.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Keys.swift; sourceTree = "<group>"; };
 		50A670F36962795FC5B101EB /* Pods-Watchy.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Watchy.release.xcconfig"; path = "Target Support Files/Pods-Watchy/Pods-Watchy.release.xcconfig"; sourceTree = "<group>"; };
 		773F65A1A4ACC6680557A93D /* Pods_Watchy.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Watchy.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -103,6 +105,7 @@
 			isa = PBXGroup;
 			children = (
 				4222AA0F24252D0B00047104 /* TableViewCell+Design.swift */,
+				4278C41B242D8A75000738AA /* ImageView+Design.swift */,
 			);
 			path = Extenstions;
 			sourceTree = "<group>";
@@ -370,6 +373,7 @@
 				42A2766F2423E636006BC24F /* Keys.swift in Sources */,
 				4238F1C524283E36007FEB9D /* InfoViewController.swift in Sources */,
 				426C77522423E53F00E99DA0 /* AppDelegate.swift in Sources */,
+				4278C41C242D8A75000738AA /* ImageView+Design.swift in Sources */,
 				4222AA0B242521D400047104 /* CustomCellTableViewCell.swift in Sources */,
 				426C77542423E53F00E99DA0 /* SceneDelegate.swift in Sources */,
 				4220F277242B13BB00ACA591 /* SearchedCellTableViewCell.swift in Sources */,

@@ -136,6 +136,7 @@ extension TrendingViewController: UICollectionViewDelegate, UICollectionViewData
                         let size = CGSize(width: 180, height: 215)
                         let scaledImage = image.af_imageScaled(to: size)
                         DispatchQueue.main.async {
+                            cell.moviePoster.setCornerRadius()
                             cell.moviePoster.image = scaledImage
                             cell.movieTitle.text = eachMovie["title"] as? String ?? ""
                             cell.releaseDate.text = eachMovie["release_date"] as? String ?? ""
