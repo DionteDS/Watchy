@@ -45,6 +45,6 @@
         </scene>
     </scenes>
     <resources>
-        <image name="trending" width="48" height="48"/>
+        <image name="trending" width="24" height="24"/>
     </resources>
 </document>

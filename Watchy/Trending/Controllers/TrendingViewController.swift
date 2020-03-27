@@ -33,6 +33,16 @@ class TrendingViewController: UIViewController {
         collectionView.backgroundColor = .white
         return collectionView
     }()
+    
+    let headerTitle: UILabel = {
+        let label = UILabel()
+        label.translatesAutoresizingMaskIntoConstraints = false
+        label.text = "Trending Movies This Week"
+        label.font = UIFont.boldSystemFont(ofSize: 25)
+        label.textColor = .black
+        label.heightAnchor.constraint(equalToConstant: 60).isActive = true
+        return label
+    }()
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -52,7 +62,7 @@ class TrendingViewController: UIViewController {
     
     private func setupNavBar() {
         
-        navigationItem.title = "Trending this week"
+        navigationItem.title = "Trending"
         navigationController?.navigationBar.titleTextAttributes = [NSAttributedString.Key.foregroundColor:UIColor.white]
         
     }
@@ -60,9 +70,14 @@ class TrendingViewController: UIViewController {
     // setup the constraints
     private func setupLayout() {
         
+        view.addSubview(headerTitle)
         view.addSubview(movieTrendingCollection)
         
-        movieTrendingCollection.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor, constant: 30).isActive = true
+        headerTitle.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor, constant: 5).isActive = true
+        headerTitle.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 10).isActive = true
+        headerTitle.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -10).isActive = true
+        
+        movieTrendingCollection.topAnchor.constraint(equalTo: headerTitle.bottomAnchor, constant: 10).isActive = true
         movieTrendingCollection.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 0).isActive = true
         movieTrendingCollection.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: 0).isActive = true
         
@@ -173,6 +188,11 @@ extension TrendingViewController: UICollectionViewDelegate, UICollectionViewData
         
         return cell
         
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        print("Selected \(indexPath.item)")
+        collectionView.deselectItem(at: indexPath, animated: true)
     }
     
 }
