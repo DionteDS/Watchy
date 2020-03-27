@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="15705" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="h5S-DX-A6y">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="16096" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="h5S-DX-A6y">
     <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="15706"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="16086"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
@@ -18,6 +18,7 @@
                     <connections>
                         <segue destination="z9g-Z0-uHv" kind="relationship" relationship="viewControllers" id="vio-Lk-JzZ"/>
                         <segue destination="kjv-yK-Rkr" kind="relationship" relationship="viewControllers" id="NC1-9S-WXe"/>
+                        <segue destination="fnb-Sk-Gb6" kind="relationship" relationship="viewControllers" id="SNB-aq-sxe"/>
                     </connections>
                 </tabBarController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="ch6-7Z-Ztm" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
@@ -43,6 +44,16 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Ttd-OU-JLY" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="-485" y="507"/>
+        </scene>
+        <!--TrendingMovies-->
+        <scene sceneID="chv-H0-ckv">
+            <objects>
+                <viewControllerPlaceholder storyboardName="TrendingMovies" id="fnb-Sk-Gb6" sceneMemberID="viewController">
+                    <tabBarItem key="tabBarItem" title="Item" id="Iie-gN-r2Y"/>
+                </viewControllerPlaceholder>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="piJ-E1-cG5" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-289" y="510"/>
         </scene>
     </scenes>
 </document>
