@@ -7,12 +7,19 @@
 //
 
 import UIKit
+import Alamofire
+import AlamofireImage
+import SwiftyJSON
 
 class TrendingViewController: UIViewController {
+    
+//    <a target="_blank" href="https://icons8.com/icons/set/poll-topic--v1">Poll icon</a> icon by <a target="_blank" href="https://icons8.com">Icons8</a> put link in github for the icon 
     
     // MARK: - Properties
     
     private var layout = UICollectionViewFlowLayout()
+    private let trendingBaseURL = "https://api.themoviedb.org/3/trending/movie/week"
+    private var movies: [[String: Any]] = [[String: Any]]()
     
     private let movieTrendingCollection: UICollectionView = {
         let collectionView = UICollectionView(frame: .zero, collectionViewLayout: UICollectionViewFlowLayout.init())
@@ -36,7 +43,11 @@ class TrendingViewController: UIViewController {
         setupNavBar()
         setFlowLayout()
         
+        setQuery()
+        
     }
+    
+    // MARK: Setup the UI
     
     private func setupNavBar() {
         
@@ -66,6 +77,32 @@ class TrendingViewController: UIViewController {
         layout.scrollDirection = .horizontal
         
         movieTrendingCollection.setCollectionViewLayout(layout, animated: true)
+        
+    }
+    
+    
+    // MARK: - Networking Calls
+    
+    private func setQuery() {
+        
+        let params: [String: String] = ["api_key": apikey]
+        
+        fetchData(url: trendingBaseURL, parameters: params)
+        
+    }
+    
+    private func fetchData(url: String, parameters: [String: String]) {
+        
+        Alamofire.request(url, method: .get, parameters: parameters).responseJSON { (response) in
+            
+            if let responseValue = response.result.value as! [String: Any]? {
+                if let responseData = responseValue["results"] as! [[String: Any]]? {
+                    self.movies = responseData
+                    self.movieTrendingCollection.reloadData()
+                }
+            }
+            
+        }
         
     }
     
