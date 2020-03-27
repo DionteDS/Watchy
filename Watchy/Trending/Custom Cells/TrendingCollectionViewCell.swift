@@ -10,7 +10,11 @@ import UIKit
 
 class TrendingCollectionViewCell: UICollectionViewCell {
     
-    @IBOutlet weak var bgView: UIView!
+    @IBOutlet weak var movieTitle: UILabel!
+    @IBOutlet weak var releaseDate: UILabel!
+    @IBOutlet weak var ratingImg: UIImageView!
+    @IBOutlet weak var moviePoster: UIImageView!
+    
     
 
     override func awakeFromNib() {

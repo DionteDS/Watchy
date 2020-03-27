@@ -20,7 +20,7 @@ class TrendingViewController: UIViewController {
         collectionView.register(nib, forCellWithReuseIdentifier: "movieCell")
         collectionView.translatesAutoresizingMaskIntoConstraints = false
         collectionView.widthAnchor.constraint(equalToConstant: 414).isActive = true
-        collectionView.heightAnchor.constraint(equalToConstant: 200).isActive = true
+        collectionView.heightAnchor.constraint(equalToConstant: 300).isActive = true
         collectionView.isScrollEnabled = true
         collectionView.backgroundColor = .black
         return collectionView
@@ -33,7 +33,15 @@ class TrendingViewController: UIViewController {
         movieTrendingCollection.dataSource = self
         
         setupLayout()
+        setupNavBar()
         setFlowLayout()
+        
+    }
+    
+    private func setupNavBar() {
+        
+        navigationItem.title = "Trending this week"
+        navigationController?.navigationBar.titleTextAttributes = [NSAttributedString.Key.foregroundColor:UIColor.white]
         
     }
     
@@ -48,10 +56,10 @@ class TrendingViewController: UIViewController {
         
     }
     
-    // Setup the flow layout
+    // setup flow layout
     private func setFlowLayout() {
         
-        layout.itemSize = CGSize(width: 150, height: 150)
+        layout.itemSize = CGSize(width: 180, height: 290)
         layout.minimumLineSpacing = 8
         layout.minimumInteritemSpacing = 8
         layout.sectionInset = UIEdgeInsets(top: 0, left: 10, bottom: 0, right: 10)
@@ -77,8 +85,12 @@ extension TrendingViewController: UICollectionViewDelegate, UICollectionViewData
         
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "movieCell", for: indexPath) as! TrendingCollectionViewCell
         
-        cell.bgView.backgroundColor = .red
+        cell.movieTitle.text = "title"
+        cell.releaseDate.text = "01/02/20"
+        cell.moviePoster.backgroundColor = .cyan
         
+        cell.movieTitle.textColor = .white
+        cell.releaseDate.textColor = .white
         return cell
         
     }
