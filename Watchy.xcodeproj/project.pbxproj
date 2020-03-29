@@ -22,6 +22,7 @@
 		4238F1C824285EB6007FEB9D /* Search.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 4238F1C724285EB6007FEB9D /* Search.storyboard */; };
 		4238F1CB24285EED007FEB9D /* SearchViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4238F1CA24285EED007FEB9D /* SearchViewController.swift */; };
 		4247A568242D2E45000E5203 /* SearchMovieInfoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4247A567242D2E45000E5203 /* SearchMovieInfoViewController.swift */; };
+		424AB46F24304ACF00679FD3 /* TrendingSelectedInfoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 424AB46E24304ACF00679FD3 /* TrendingSelectedInfoViewController.swift */; };
 		426C77522423E53F00E99DA0 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 426C77512423E53F00E99DA0 /* AppDelegate.swift */; };
 		426C77542423E53F00E99DA0 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 426C77532423E53F00E99DA0 /* SceneDelegate.swift */; };
 		426C77592423E53F00E99DA0 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 426C77572423E53F00E99DA0 /* Main.storyboard */; };
@@ -48,6 +49,7 @@
 		4238F1C724285EB6007FEB9D /* Search.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Search.storyboard; sourceTree = "<group>"; };
 		4238F1CA24285EED007FEB9D /* SearchViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchViewController.swift; sourceTree = "<group>"; };
 		4247A567242D2E45000E5203 /* SearchMovieInfoViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchMovieInfoViewController.swift; sourceTree = "<group>"; };
+		424AB46E24304ACF00679FD3 /* TrendingSelectedInfoViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TrendingSelectedInfoViewController.swift; sourceTree = "<group>"; };
 		426C774E2423E53F00E99DA0 /* Watchy.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Watchy.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		426C77512423E53F00E99DA0 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		426C77532423E53F00E99DA0 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -159,6 +161,7 @@
 			isa = PBXGroup;
 			children = (
 				42293139242D6A51008CF84E /* TrendingViewController.swift */,
+				424AB46E24304ACF00679FD3 /* TrendingSelectedInfoViewController.swift */,
 			);
 			path = Controllers;
 			sourceTree = "<group>";
@@ -364,6 +367,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				424AB46F24304ACF00679FD3 /* TrendingSelectedInfoViewController.swift in Sources */,
 				4226846A2423EB7B001C6734 /* NowPlayingViewController.swift in Sources */,
 				4247A568242D2E45000E5203 /* SearchMovieInfoViewController.swift in Sources */,
 				4229313E242D6BDF008CF84E /* TrendingCollectionViewCell.swift in Sources */,

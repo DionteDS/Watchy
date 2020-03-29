@@ -18,10 +18,29 @@
                         <viewLayoutGuide key="safeArea" id="tsB-lv-iTO"/>
                     </view>
                     <navigationItem key="navigationItem" id="rcw-8F-gDw"/>
+                    <connections>
+                        <segue destination="Xgv-h6-SLu" kind="show" identifier="trendingSelectedInfo" id="GhB-sT-h3I"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="t16-4u-35O" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="971.01449275362324" y="131.91964285714286"/>
+        </scene>
+        <!--Trending Selected Info View Controller-->
+        <scene sceneID="juv-8P-yCG">
+            <objects>
+                <viewController id="Xgv-h6-SLu" customClass="TrendingSelectedInfoViewController" customModule="Watchy" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="Adn-3m-SoD">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                        <viewLayoutGuide key="safeArea" id="O0E-SI-rDQ"/>
+                    </view>
+                    <navigationItem key="navigationItem" id="ugZ-0S-qpI"/>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Kwf-qC-zI1" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1796" y="132"/>
         </scene>
         <!--Trending-->
         <scene sceneID="b5f-qB-thy">

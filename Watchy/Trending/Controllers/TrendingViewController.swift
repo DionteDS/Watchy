@@ -21,6 +21,7 @@ class TrendingViewController: UIViewController {
     private let trendingBaseURL = "https://api.themoviedb.org/3/trending/movie/week"
     let baseImageURL = "https://image.tmdb.org/t/p/w500"
     private var movies: [[String: Any]] = [[String: Any]]()
+    var row = 0
     
     private let movieTrendingCollection: UICollectionView = {
         let collectionView = UICollectionView(frame: .zero, collectionViewLayout: UICollectionViewFlowLayout.init())
@@ -99,6 +100,7 @@ class TrendingViewController: UIViewController {
     
     // MARK: - Networking Calls
     
+    // Set the query
     private func setQuery() {
         
         let params: [String: String] = ["api_key": apikey]
@@ -107,6 +109,7 @@ class TrendingViewController: UIViewController {
         
     }
     
+    // parse movie data
     private func fetchData(url: String, parameters: [String: String]) {
         
         Alamofire.request(url, method: .get, parameters: parameters).responseJSON { (response) in
@@ -191,8 +194,28 @@ extension TrendingViewController: UICollectionViewDelegate, UICollectionViewData
     }
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        print("Selected \(indexPath.item)")
+        
+        // Grab the selected indexPath.row and store the index in row
+        if let rowIndex = collectionView.indexPathsForSelectedItems?.first {
+            row = rowIndex.row
+        }
+        
+        performSegue(withIdentifier: "trendingSelectedInfo", sender: self)
+        
         collectionView.deselectItem(at: indexPath, animated: true)
+    }
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        
+        if segue.identifier == "trendingSelectedInfo" {
+            let controller = segue.destination as! TrendingSelectedInfoViewController
+            let movie = movies[row]
+            controller.movieTitle = movie["title"] as? String ?? ""
+            controller.movieRelease = movie["release_date"] as? String ?? ""
+            controller.movieURL = movie["poster_path"] as? String ?? ""
+            controller.ratingCount = movie["vote_average"] as? Double ?? 0.0
+            controller.movieSummary = movie["overview"] as? String ?? ""
+        }
     }
     
 }
