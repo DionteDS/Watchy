@@ -18,6 +18,8 @@
 		4229313A242D6A51008CF84E /* TrendingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 42293139242D6A51008CF84E /* TrendingViewController.swift */; };
 		4229313E242D6BDF008CF84E /* TrendingCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4229313C242D6BDF008CF84E /* TrendingCollectionViewCell.swift */; };
 		4229313F242D6BDF008CF84E /* TrendingCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4229313D242D6BDF008CF84E /* TrendingCollectionViewCell.xib */; };
+		422C1617243426C40009C9CE /* TopRatedTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 422C1615243426C40009C9CE /* TopRatedTableViewCell.swift */; };
+		422C1618243426C40009C9CE /* TopRatedTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 422C1616243426C40009C9CE /* TopRatedTableViewCell.xib */; };
 		4238F1C524283E36007FEB9D /* InfoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4238F1C424283E36007FEB9D /* InfoViewController.swift */; };
 		4238F1C824285EB6007FEB9D /* Search.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 4238F1C724285EB6007FEB9D /* Search.storyboard */; };
 		4238F1CB24285EED007FEB9D /* SearchViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4238F1CA24285EED007FEB9D /* SearchViewController.swift */; };
@@ -45,6 +47,8 @@
 		42293139242D6A51008CF84E /* TrendingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TrendingViewController.swift; sourceTree = "<group>"; };
 		4229313C242D6BDF008CF84E /* TrendingCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TrendingCollectionViewCell.swift; sourceTree = "<group>"; };
 		4229313D242D6BDF008CF84E /* TrendingCollectionViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = TrendingCollectionViewCell.xib; sourceTree = "<group>"; };
+		422C1615243426C40009C9CE /* TopRatedTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TopRatedTableViewCell.swift; sourceTree = "<group>"; };
+		422C1616243426C40009C9CE /* TopRatedTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = TopRatedTableViewCell.xib; sourceTree = "<group>"; };
 		4238F1C424283E36007FEB9D /* InfoViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InfoViewController.swift; sourceTree = "<group>"; };
 		4238F1C724285EB6007FEB9D /* Search.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Search.storyboard; sourceTree = "<group>"; };
 		4238F1CA24285EED007FEB9D /* SearchViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchViewController.swift; sourceTree = "<group>"; };
@@ -142,6 +146,7 @@
 		42293134242D6A16008CF84E /* Trending */ = {
 			isa = PBXGroup;
 			children = (
+				422C16102434267B0009C9CE /* Custom Cells 2 */,
 				4229313B242D6BCC008CF84E /* Custom Cells */,
 				42293138242D6A44008CF84E /* Controllers */,
 				42293137242D6A3D008CF84E /* Views */,
@@ -173,6 +178,15 @@
 				4229313D242D6BDF008CF84E /* TrendingCollectionViewCell.xib */,
 			);
 			path = "Custom Cells";
+			sourceTree = "<group>";
+		};
+		422C16102434267B0009C9CE /* Custom Cells 2 */ = {
+			isa = PBXGroup;
+			children = (
+				422C1615243426C40009C9CE /* TopRatedTableViewCell.swift */,
+				422C1616243426C40009C9CE /* TopRatedTableViewCell.xib */,
+			);
+			path = "Custom Cells 2";
 			sourceTree = "<group>";
 		};
 		4238F1C624285E8E007FEB9D /* Search Movie */ = {
@@ -312,6 +326,7 @@
 				426C775E2423E54000E99DA0 /* LaunchScreen.storyboard in Resources */,
 				4222AA0C242521D400047104 /* CustomCellTableViewCell.xib in Resources */,
 				426C775B2423E54000E99DA0 /* Assets.xcassets in Resources */,
+				422C1618243426C40009C9CE /* TopRatedTableViewCell.xib in Resources */,
 				4238F1C824285EB6007FEB9D /* Search.storyboard in Resources */,
 				42293136242D6A2B008CF84E /* TrendingMovies.storyboard in Resources */,
 				426C77592423E53F00E99DA0 /* Main.storyboard in Resources */,
@@ -377,6 +392,7 @@
 				42A2766F2423E636006BC24F /* Keys.swift in Sources */,
 				4238F1C524283E36007FEB9D /* InfoViewController.swift in Sources */,
 				426C77522423E53F00E99DA0 /* AppDelegate.swift in Sources */,
+				422C1617243426C40009C9CE /* TopRatedTableViewCell.swift in Sources */,
 				4278C41C242D8A75000738AA /* ImageView+Design.swift in Sources */,
 				4222AA0B242521D400047104 /* CustomCellTableViewCell.swift in Sources */,
 				426C77542423E53F00E99DA0 /* SceneDelegate.swift in Sources */,

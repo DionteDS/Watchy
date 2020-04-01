@@ -44,12 +44,33 @@ class TrendingViewController: UIViewController {
         label.heightAnchor.constraint(equalToConstant: 60).isActive = true
         return label
     }()
+    
+    let topRatedHeader: UILabel = {
+        let label = UILabel()
+        label.translatesAutoresizingMaskIntoConstraints = false
+        label.font = UIFont.boldSystemFont(ofSize: 26)
+        label.textColor = .black
+        label.text = "Top Rated Movies"
+        return label
+    }()
+    
+    let topRatedTableView: UITableView = {
+        let tableView = UITableView()
+        let nib = UINib(nibName: "TopRatedTableViewCell", bundle: nil)
+        tableView.translatesAutoresizingMaskIntoConstraints = false
+        tableView.register(nib, forCellReuseIdentifier: "topRatedCell")
+        tableView.backgroundColor = .red
+        return tableView
+    }()
 
     override func viewDidLoad() {
         super.viewDidLoad()
 
         movieTrendingCollection.delegate = self
         movieTrendingCollection.dataSource = self
+        
+        topRatedTableView.delegate = self
+        topRatedTableView.dataSource = self
         
         setupLayout()
         setupNavBar()
@@ -73,6 +94,8 @@ class TrendingViewController: UIViewController {
         
         view.addSubview(headerTitle)
         view.addSubview(movieTrendingCollection)
+        view.addSubview(topRatedHeader)
+        view.addSubview(topRatedTableView)
         
         headerTitle.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor, constant: 5).isActive = true
         headerTitle.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 10).isActive = true
@@ -81,6 +104,16 @@ class TrendingViewController: UIViewController {
         movieTrendingCollection.topAnchor.constraint(equalTo: headerTitle.bottomAnchor, constant: 10).isActive = true
         movieTrendingCollection.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 0).isActive = true
         movieTrendingCollection.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: 0).isActive = true
+        
+        topRatedHeader.topAnchor.constraint(equalTo: movieTrendingCollection.bottomAnchor, constant: 10).isActive = true
+        topRatedHeader.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 10).isActive = true
+        topRatedHeader.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -10).isActive = true
+
+
+        topRatedTableView.topAnchor.constraint(equalTo: topRatedHeader.bottomAnchor, constant: 10).isActive = true
+        topRatedTableView.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 0).isActive = true
+        topRatedTableView.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: 0).isActive = true
+        topRatedTableView.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor, constant: 0).isActive = true
         
     }
     
@@ -218,4 +251,41 @@ extension TrendingViewController: UICollectionViewDelegate, UICollectionViewData
         }
     }
     
+}
+
+
+// MARK: - TableView delegate and DataSource Methods
+
+
+extension TrendingViewController: UITableViewDataSource, UITableViewDelegate {
+
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        return 10
+    }
+
+
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+
+        let cell = tableView.dequeueReusableCell(withIdentifier: "topRatedCell", for: indexPath) as! TopRatedTableViewCell
+
+        cell.customDesign()
+
+
+        return cell
+
+    }
+    
+    func tableView(_ tableView: UITableView, willDisplay cell: UITableViewCell, forRowAt indexPath: IndexPath) {
+        
+        cell.contentView.layer.masksToBounds = true
+        
+        let radius = cell.contentView.layer.cornerRadius
+        cell.layer.shadowPath = UIBezierPath(roundedRect: cell.bounds, cornerRadius: radius).cgPath
+        
+    }
+    
+    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+        return 160
+    }
+
 }
