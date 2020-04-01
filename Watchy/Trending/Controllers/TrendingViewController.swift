@@ -73,6 +73,7 @@ class TrendingViewController: UIViewController {
         
         topRatedTableView.delegate = self
         topRatedTableView.dataSource = self
+        topRatedTableView.separatorStyle = .none
         
         setupLayout()
         setupNavBar()
@@ -303,14 +304,61 @@ extension TrendingViewController: UITableViewDataSource, UITableViewDelegate {
         if topRatedMovies.count > 0 {
             
             let movies = topRatedMovies[indexPath.row]
+            let rating = movies["vote_average"] as? Double ?? 0.0
             
-            cell.ratedTitleLabel.text = movies["title"] as? String ?? ""
-            cell.ratedReleaseDateLabel.text = movies["release_date"] as? String ?? ""
+            if let imageURL = movies["poster_path"] as? String {
+                Alamofire.request(baseImageURL + imageURL).responseImage { (response) in
+                    
+                    if let image = response.result.value {
+                        let size = CGSize(width: 100, height: 120)
+                        let scaledImage = image.af_imageScaled(to: size)
+                        DispatchQueue.main.async {
+                            cell.ratedPosterImg.image = scaledImage
+                            cell.ratedTitleLabel.text = movies["title"] as? String ?? ""
+                            cell.ratedReleaseDateLabel.text = movies["release_date"] as? String ?? ""
+                        }
+                    }
+                    
+                }
+                
+                // Determine the star rating for each movie
+                if rating >= 9  && rating <= 10{
+                    cell.ratedRatingImg.image = UIImage(named: "regular_5")
+                } else if rating >= 8 && rating < 9 {
+                    cell.ratedRatingImg.image = UIImage(named: "regular_4_half")
+                } else if rating >= 7 && rating < 8 {
+                    cell.ratedRatingImg.image = UIImage(named: "regular_4")
+                } else if rating >= 6 && rating < 7 {
+                    cell.ratedRatingImg.image = UIImage(named: "regular_3_half")
+                } else if rating >= 5 && rating < 6 {
+                    cell.ratedRatingImg.image = UIImage(named: "regular_3")
+                } else if rating >= 4 && rating < 5 {
+                    cell.ratedRatingImg.image = UIImage(named: "regular_2_half")
+                } else if rating >= 3 && rating < 4 {
+                    cell.ratedRatingImg.image = UIImage(named: "regular_2")
+                } else if rating >= 2 && rating < 3 {
+                    cell.ratedRatingImg.image = UIImage(named: "regular_1_half")
+                } else if rating >= 1 && rating < 2 {
+                    cell.ratedRatingImg.image = UIImage(named: "regular_1")
+                } else {
+                    cell.ratedRatingImg.image = UIImage(named: "regular_0")
+                }
+            }
             
         }
 
         return cell
 
+    }
+    
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        
+        if let rowIndex = tableView.indexPathForSelectedRow?.row {
+            row = rowIndex
+        }
+        
+        tableView.deselectRow(at: indexPath, animated: true)
+        
     }
     
     func tableView(_ tableView: UITableView, willDisplay cell: UITableViewCell, forRowAt indexPath: IndexPath) {
