@@ -19,9 +19,11 @@ class TrendingViewController: UIViewController {
     
     private var layout = UICollectionViewFlowLayout()
     private let trendingBaseURL = "https://api.themoviedb.org/3/trending/movie/week"
-    let baseImageURL = "https://image.tmdb.org/t/p/w500"
+    private let topRatedBaseURL = "https://api.themoviedb.org/3/movie/top_rated"
+    private let baseImageURL = "https://image.tmdb.org/t/p/w500"
     private var movies: [[String: Any]] = [[String: Any]]()
-    var row = 0
+    private var topRatedMovies: [[String: Any]] = [[String: Any]]()
+    private var row = 0
     
     private let movieTrendingCollection: UICollectionView = {
         let collectionView = UICollectionView(frame: .zero, collectionViewLayout: UICollectionViewFlowLayout.init())
@@ -35,7 +37,7 @@ class TrendingViewController: UIViewController {
         return collectionView
     }()
     
-    let headerTitle: UILabel = {
+    private let headerTitle: UILabel = {
         let label = UILabel()
         label.translatesAutoresizingMaskIntoConstraints = false
         label.text = "Trending Movies This Week"
@@ -45,7 +47,7 @@ class TrendingViewController: UIViewController {
         return label
     }()
     
-    let topRatedHeader: UILabel = {
+    private let topRatedHeader: UILabel = {
         let label = UILabel()
         label.translatesAutoresizingMaskIntoConstraints = false
         label.font = UIFont.boldSystemFont(ofSize: 26)
@@ -54,7 +56,7 @@ class TrendingViewController: UIViewController {
         return label
     }()
     
-    let topRatedTableView: UITableView = {
+    private let topRatedTableView: UITableView = {
         let tableView = UITableView()
         let nib = UINib(nibName: "TopRatedTableViewCell", bundle: nil)
         tableView.translatesAutoresizingMaskIntoConstraints = false
@@ -77,6 +79,7 @@ class TrendingViewController: UIViewController {
         setFlowLayout()
         
         setQuery()
+        setQueryForTopRated()
         
     }
     
@@ -131,7 +134,7 @@ class TrendingViewController: UIViewController {
     }
     
     
-    // MARK: - Networking Calls
+    // MARK: - Networking Calls for trending
     
     // Set the query
     private func setQuery() {
@@ -152,6 +155,33 @@ class TrendingViewController: UIViewController {
                     self.movies = responseData
                     self.movieTrendingCollection.reloadData()
                 }
+            }
+            
+        }
+        
+    }
+    
+    // MARK: - Networking Calls for top rated
+    
+    private func setQueryForTopRated() {
+        
+        let params: [String: String] = ["api_key": apikey, "language": "en-US", "page": "1"]
+        
+        fetchDataForTopRated(url: topRatedBaseURL, parameters: params)
+        
+    }
+    
+    private func fetchDataForTopRated(url: String, parameters: [String: String]) {
+        
+        Alamofire.request(url, method: .get, parameters: parameters).responseJSON { (response) in
+            
+            if let responseValue = response.result.value as! [String: Any]? {
+                if let responseData = responseValue["results"] as! [[String: Any]]? {
+                    self.topRatedMovies = responseData
+                    self.topRatedTableView.reloadData()
+                }
+            } else {
+                print(response.error!)
             }
             
         }
@@ -260,7 +290,7 @@ extension TrendingViewController: UICollectionViewDelegate, UICollectionViewData
 extension TrendingViewController: UITableViewDataSource, UITableViewDelegate {
 
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 10
+        return topRatedMovies.count
     }
 
 
@@ -270,6 +300,14 @@ extension TrendingViewController: UITableViewDataSource, UITableViewDelegate {
 
         cell.customDesign()
 
+        if topRatedMovies.count > 0 {
+            
+            let movies = topRatedMovies[indexPath.row]
+            
+            cell.ratedTitleLabel.text = movies["title"] as? String ?? ""
+            cell.ratedReleaseDateLabel.text = movies["release_date"] as? String ?? ""
+            
+        }
 
         return cell
 
