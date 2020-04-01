@@ -20,6 +20,7 @@
                     <navigationItem key="navigationItem" id="rcw-8F-gDw"/>
                     <connections>
                         <segue destination="Xgv-h6-SLu" kind="show" identifier="trendingSelectedInfo" id="GhB-sT-h3I"/>
+                        <segue destination="G7w-EW-Kx1" kind="show" identifier="topRatedInfo" id="UPq-Ib-Pbx"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="t16-4u-35O" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
@@ -41,6 +42,22 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Kwf-qC-zI1" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="1796" y="132"/>
+        </scene>
+        <!--Top Rated Info View Controller-->
+        <scene sceneID="sui-eI-b7q">
+            <objects>
+                <viewController id="G7w-EW-Kx1" customClass="TopRatedInfoViewController" customModule="Watchy" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="iAk-bs-nPN">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                        <viewLayoutGuide key="safeArea" id="aIA-G4-e90"/>
+                    </view>
+                    <navigationItem key="navigationItem" id="hYT-P9-g6q"/>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="MTg-9e-Kw0" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1388" y="898"/>
         </scene>
         <!--Trending-->
         <scene sceneID="b5f-qB-thy">

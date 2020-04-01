@@ -357,6 +357,8 @@ extension TrendingViewController: UITableViewDataSource, UITableViewDelegate {
             row = rowIndex
         }
         
+        performSegue(withIdentifier: "topRatedInfo", sender: self)
+        
         tableView.deselectRow(at: indexPath, animated: true)
         
     }
@@ -373,5 +375,7 @@ extension TrendingViewController: UITableViewDataSource, UITableViewDelegate {
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         return 160
     }
+    
+    
 
 }

@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		4215BF9E24343E800057CD07 /* TopRatedInfoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4215BF9D24343E800057CD07 /* TopRatedInfoViewController.swift */; };
 		4220F277242B13BB00ACA591 /* SearchedCellTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4220F275242B13BB00ACA591 /* SearchedCellTableViewCell.swift */; };
 		4220F278242B13BB00ACA591 /* SearchedCellTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4220F276242B13BB00ACA591 /* SearchedCellTableViewCell.xib */; };
 		4222AA0B242521D400047104 /* CustomCellTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4222AA09242521D400047104 /* CustomCellTableViewCell.swift */; };
@@ -36,6 +37,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		4215BF9D24343E800057CD07 /* TopRatedInfoViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TopRatedInfoViewController.swift; sourceTree = "<group>"; };
 		4220F275242B13BB00ACA591 /* SearchedCellTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchedCellTableViewCell.swift; sourceTree = "<group>"; };
 		4220F276242B13BB00ACA591 /* SearchedCellTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SearchedCellTableViewCell.xib; sourceTree = "<group>"; };
 		4222AA09242521D400047104 /* CustomCellTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomCellTableViewCell.swift; sourceTree = "<group>"; };
@@ -167,6 +169,7 @@
 			children = (
 				42293139242D6A51008CF84E /* TrendingViewController.swift */,
 				424AB46E24304ACF00679FD3 /* TrendingSelectedInfoViewController.swift */,
+				4215BF9D24343E800057CD07 /* TopRatedInfoViewController.swift */,
 			);
 			path = Controllers;
 			sourceTree = "<group>";
@@ -384,6 +387,7 @@
 			files = (
 				424AB46F24304ACF00679FD3 /* TrendingSelectedInfoViewController.swift in Sources */,
 				4226846A2423EB7B001C6734 /* NowPlayingViewController.swift in Sources */,
+				4215BF9E24343E800057CD07 /* TopRatedInfoViewController.swift in Sources */,
 				4247A568242D2E45000E5203 /* SearchMovieInfoViewController.swift in Sources */,
 				4229313E242D6BDF008CF84E /* TrendingCollectionViewCell.swift in Sources */,
 				4229313A242D6A51008CF84E /* TrendingViewController.swift in Sources */,
