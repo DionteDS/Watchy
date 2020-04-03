@@ -36,7 +36,6 @@ class TrendingSelectedInfoViewController: UIViewController {
     let movieTitleLabel: UILabel = {
         let label = UILabel()
         label.font = UIFont.boldSystemFont(ofSize: 26)
-        
         label.textColor = .black
         return label
     }()
