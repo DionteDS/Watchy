@@ -27,4 +27,4 @@ You will also need to sign up on The Movie Database API for an api key.
 
 ### Errors
 
-If an error happens when your open the project delete the Serects.swift file
+If an error happens when your open the project delete the Keys.swift file
