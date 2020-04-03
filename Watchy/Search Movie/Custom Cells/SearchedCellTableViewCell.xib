@@ -33,7 +33,7 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="fVd-c3-1wc">
-                                <rect key="frame" x="0.0" y="41" width="195" height="25"/>
+                                <rect key="frame" x="0.0" y="41" width="102" height="25"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="25" id="KR7-Vk-Xy9"/>
                                 </constraints>

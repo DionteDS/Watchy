@@ -25,7 +25,7 @@
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="85h-JX-b6v">
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" highlightedImage="regular_0" translatesAutoresizingMaskIntoConstraints="NO" id="85h-JX-b6v">
                                 <rect key="frame" x="0.0" y="37" width="102" height="25"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="25" id="moj-S5-uvg"/>
@@ -67,5 +67,6 @@
     </objects>
     <resources>
         <image name="error" width="50" height="50"/>
+        <image name="regular_0" width="102" height="18"/>
     </resources>
 </document>

@@ -189,6 +189,8 @@ class TrendingViewController: UIViewController {
         
     }
     
+    // Segue to different vc's.
+    // Create the controller object to store the data being sent over
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
            
            if segue.identifier == "trendingSelectedInfo" {
@@ -204,6 +206,9 @@ class TrendingViewController: UIViewController {
             let movie = topRatedMovies[row]
             controller.movieTitle = movie["title"] as? String ?? ""
             controller.movieReleaseDate = movie["release_date"] as? String ?? ""
+            controller.movieURL = movie["poster_path"] as? String ?? ""
+            controller.ratingCount = movie["vote_average"] as? Double ?? 0.0
+            controller.movieSummary = movie["overview"] as? String ?? ""
         }
         
        }
@@ -285,19 +290,6 @@ extension TrendingViewController: UICollectionViewDelegate, UICollectionViewData
         
         collectionView.deselectItem(at: indexPath, animated: true)
     }
-    
-//    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-//
-//        if segue.identifier == "trendingSelectedInfo" {
-//            let controller = segue.destination as! TrendingSelectedInfoViewController
-//            let movie = movies[row]
-//            controller.movieTitle = movie["title"] as? String ?? ""
-//            controller.movieRelease = movie["release_date"] as? String ?? ""
-//            controller.movieURL = movie["poster_path"] as? String ?? ""
-//            controller.ratingCount = movie["vote_average"] as? Double ?? 0.0
-//            controller.movieSummary = movie["overview"] as? String ?? ""
-//        }
-//    }
     
 }
 
