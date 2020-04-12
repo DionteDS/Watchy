@@ -24,7 +24,3 @@ You will also need to sign up on The Movie Database API for an api key.
 ### Source
 
 * [The Movie Database API](https://developers.themoviedb.org/3/getting-started/introduction)
-
-### Errors
-
-If an error happens when your open the project delete the Keys.swift file
