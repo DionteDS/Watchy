@@ -19,6 +19,7 @@ class SearchViewController: UIViewController {
     private let baseImageURL = "https://image.tmdb.org/t/p/w500"
     private var movies: [[String: Any]] = [[String: Any]]()
     private var row = 0
+//    private let apikey = "Place your api key here"
     
     // SearchBar Property
     private let searchBar: UISearchBar = {

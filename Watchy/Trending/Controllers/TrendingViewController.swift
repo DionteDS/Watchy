@@ -24,6 +24,7 @@ class TrendingViewController: UIViewController {
     private var movies: [[String: Any]] = [[String: Any]]()
     private var topRatedMovies: [[String: Any]] = [[String: Any]]()
     private var row = 0
+//    private let apikey = "Place api key here"
     
     private let movieTrendingCollection: UICollectionView = {
         let collectionView = UICollectionView(frame: .zero, collectionViewLayout: UICollectionViewFlowLayout.init())

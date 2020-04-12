@@ -20,6 +20,7 @@ class NowPlayingViewController: UIViewController {
     
     var nowPlayingMovies: [[String: Any]] = [[String: Any]]()
     var row = 0
+//    let apikey = "Place api key here"
     
     // Create the now playing tableView
     let nowPlayingTable: UITableView = {
